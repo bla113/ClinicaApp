@@ -23,15 +23,14 @@ Partial Class frmEspecialidades
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         GroupBox1 = New GroupBox()
+        lbl_id = New Label()
         btn_guardar = New Button()
         txt_especialidad = New TextBox()
         Label1 = New Label()
         btn_regresar = New Button()
         dgv_especialidades = New DataGridView()
-        Column1 = New DataGridViewTextBoxColumn()
         btn_guardar_cambios = New Button()
         btn_eliminar = New Button()
-        lbl_id = New Label()
         GroupBox1.SuspendLayout()
         CType(dgv_especialidades, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -50,6 +49,15 @@ Partial Class frmEspecialidades
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
         GroupBox1.Text = "Agregar especialidades"
+        ' 
+        ' lbl_id
+        ' 
+        lbl_id.AutoSize = True
+        lbl_id.Location = New Point(82, 169)
+        lbl_id.Name = "lbl_id"
+        lbl_id.Size = New Size(33, 28)
+        lbl_id.TabIndex = 6
+        lbl_id.Text = "ID"
         ' 
         ' btn_guardar
         ' 
@@ -90,20 +98,11 @@ Partial Class frmEspecialidades
         ' dgv_especialidades
         ' 
         dgv_especialidades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgv_especialidades.Columns.AddRange(New DataGridViewColumn() {Column1})
         dgv_especialidades.Location = New Point(82, 439)
         dgv_especialidades.Name = "dgv_especialidades"
         dgv_especialidades.RowHeadersWidth = 51
         dgv_especialidades.Size = New Size(576, 188)
         dgv_especialidades.TabIndex = 4
-        ' 
-        ' Column1
-        ' 
-        Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        Column1.HeaderText = "Column1"
-        Column1.MinimumWidth = 6
-        Column1.Name = "Column1"
-        Column1.Width = 125
         ' 
         ' btn_guardar_cambios
         ' 
@@ -122,15 +121,6 @@ Partial Class frmEspecialidades
         btn_eliminar.TabIndex = 5
         btn_eliminar.Text = "Eliminar Registro"
         btn_eliminar.UseVisualStyleBackColor = True
-        ' 
-        ' lbl_id
-        ' 
-        lbl_id.AutoSize = True
-        lbl_id.Location = New Point(82, 169)
-        lbl_id.Name = "lbl_id"
-        lbl_id.Size = New Size(33, 28)
-        lbl_id.TabIndex = 6
-        lbl_id.Text = "ID"
         ' 
         ' frmEspecialidades
         ' 
@@ -158,7 +148,6 @@ Partial Class frmEspecialidades
     Friend WithEvents Label1 As Label
     Friend WithEvents btn_regresar As Button
     Friend WithEvents dgv_especialidades As DataGridView
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents btn_guardar_cambios As Button
     Friend WithEvents btn_eliminar As Button
     Friend WithEvents lbl_id As Label

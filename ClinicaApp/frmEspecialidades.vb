@@ -94,4 +94,31 @@ Public Class frmEspecialidades
             MessageBox.Show("Por favor, seleccione una especialidad para eliminar.", "Selección Invalida", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
+
+    Private Sub btn_guardar_cambios_Click(sender As Object, e As EventArgs) Handles btn_guardar_cambios.Click
+
+        Dim id_especialidad As Integer
+        Dim descripcion As String = txt_especialidad.Text.Trim()
+        If Integer.TryParse(lbl_id.Text, id_especialidad) AndAlso Not String.IsNullOrEmpty(descripcion) Then
+            Try
+                Dim conn = conexion.Abrir()
+                Dim updateQuery As String = "UPDATE especialidad SET descripcion = @descripcion WHERE id = @id"
+                Using command As New MySqlCommand(updateQuery, conn)
+                    command.Parameters.AddWithValue("@descripcion", descripcion)
+                    command.Parameters.AddWithValue("@id", id_especialidad)
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+                    If rowsAffected > 0 Then
+                        MessageBox.Show("Especialidad actualizada exitosamente.", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        cargarEspecialidades() ' Recargar las especialidades después de actualizar
+                    Else
+                        MessageBox.Show("No se pudo actualizar la especialidad. Inténtelo de nuevo.", "Error de Actualización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error al actualizar la especialidad: " & ex.Message, "Error MySQL", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        Else
+            MessageBox.Show("Por favor, seleccione una especialidad y asegúrese de que la descripción no esté vacía.", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
 End Class
